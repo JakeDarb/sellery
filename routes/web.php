@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +18,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/users', function () {
+    $users = \DB::table("users")->get();
+    $data["users"] = $users;
+    return view('users/index', $data);
+});
+
 Route::get('/products', function(){
-    return view('products/index');
+    $dataProducts['products'] = [
+        "Playstation 5",
+        "Medion computer",
+        "samsung tv",
+        "iPhone 10"
+    ];
+    return view('products/index', $dataProducts);
 });
