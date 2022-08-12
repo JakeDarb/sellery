@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
 
 
 /*
@@ -24,7 +25,7 @@ Route::get('/users', function () {
     return view('users/index', $data);
 });
 
-Route::get('/products', function(){
+/*Route::get('/products', function(){
     $dataProducts['products'] = [
         "Playstation 5",
         "Medion computer",
@@ -32,4 +33,7 @@ Route::get('/products', function(){
         "iPhone 10"
     ];
     return view('products/index', $dataProducts);
-});
+});*/
+
+Route::get('/products', [ProductController::class, "index"]);
+Route::get('/products/{product}', [ProductController::class, "show"]);
